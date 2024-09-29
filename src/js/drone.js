@@ -8,7 +8,7 @@ import * as THREE from 'three';
                     //import stars from './img/stars.jpg';
                     //may need to replace "Addons.js" with "OrbitControls.js"
                     function createScene(containerId) {
-                        const droneUrl = new URL('/static/drone/drone.gltf', import.meta.url);
+                        const droneUrl = new URL('/static/drone/Drone.gltf', import.meta.url);
 
                         const renderer = new THREE.WebGLRenderer({antialias: true}, {alpha: true});
                         const container = document.getElementById(containerId);
