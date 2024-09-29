@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>ET</title>
+        <link rel="stylesheet" href="style.css">
+
+        <script type="importmap">
+			{
+				"imports": {
+					"three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+                    "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/",
+                    "dat.gui": "https://cdn.skypack.dev/dat.gui"
+                }
+			}
+		</script>    
+    </head>
+    <body>
+        <div class="header">
+            <div class="header-title-container">
+                <div class="header-title">Ethan Taub</div>
+                <div class="header-date">2024</div>
+            </div>
+            <div class="header-nav-container">
+                <div class="navItem" id="home">
+                    <span class="cursor-target" data-clickable="false">
+                        <span class="header-header-nav-item" data-clickable="false" style="color:rgba(0, 0, 0, 0.4)">Home</span> 
+                    </span>
+                </div>
+                <div class="navItem" id="store">
+                    <span class="cursor-target" data-clickable="true">
+                        <span class="header-header-nav-item" data-clickable="true" style="color:rgba(0, 0, 0, 0.4)">Store</span> 
+                    </span>
+                </div>
+                <div class="navItem" id="about">
+                    <span class="cursor-target" data-clickable="true">
+                        <span class="header-header-nav-item" data-clickable="true" style="color:rgba(0, 0, 0, 0.4)">About</span> 
+                    </span>
+                </div>
+                <div class="navItem" id="instagram">
+                    <span class="cursor-target" data-clickable="true">
+                        <span class="header-header-nav-item">
+                            <a class="linkExt" href="https://www.instagram.com/ethan.taub"  target="_blank" data-clickable="true" style="color:rgba(0, 0, 0, 0.4)">Instagram</a> 
+                        </span>
+                    </span>
+                </div>
+                <div class="navItem" id="linkedin">
+                    <span class="cursor-target" data-clickable="true">
+                        <span class="header-header-nav-item">
+                            <a class="linkExt" href="https://www.linkedin.com/in/ethan-taub-312496166/" target="_blank" data-clickable="true" style="color:rgba(0, 0, 0, 0.4)">LinkedIn</a>
+                        </span> 
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gallery">
+            <div id="b52" class="model-container" data-title="B-52J" association="The Boeing Company" data-description="Designed propulsion structure for the B-52J Commercial Engine Replacement Program (CERP), including primary pylon strut attach fittings, structural frames, secondary details, and exterior fairings.">
+                <script type="module" src="./js/b52.js"></script>
+            </div>
+            <div id="drone" class="model-container" data-title="Dual Drone System" association="New York University" data-description="Led the design, manufacturing, and testing of a multi-UAV system to maximize area coverage in a multitude of scenarios.  This project was awarded 'The Best Design' and 'Students' Choice' awards out of all NYU Tandon School of Engineering senior capstone projects for the class of 2022. Collaborators are Sebastian Abreu, JC Guerrero, Chris Glenn, Charles Xie, Adam Kang, and Henry Simon.">
+                <script type="module" src="./js/drone.js"></script>
+            </div>
+            <div id="doghouse" class="model-container" data-title="DroneDog System" association="Asylon Robotics" data-description="Assisted in the development of the DogHouse, inluding the overall system architecture, the testing program with Boston Dynamics' Spot robot dog, and the design of several structural details. Drafted and presented Prelimininary Design Review (PDR) to company executives and leadership.">
+                <script type="module" src="./js/house.js"></script>
+            </div>
+        </div>
+
+        <div class="description-panel" id="descriptionPanel">        
+            <div id="descriptionContent" class="about-container">
+                <div class="about-text">
+                    <h2 id="descriptionTitle"></h2>
+                    <p id="descriptionAssociativity"></p>
+                    <p id="descriptionText"></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="backButton-container" id="backButtonContainer" style="font-size:20px;">
+            <span class="cursor-target" data-clickable="true">
+                <button class="close-btn" id="closeBtn">
+                    <svg viewBox="0 0 60.08 60.08">
+                        <path d="M25.64,58.83L2.56,30.04,25.64,1.25" fill="none" fill-rule="evenodd" stroke-miterlimit="10"></path>
+                    </svg>
+                </button>
+            </span>
+        </div>
+
+        <div class="about-image" id="aboutImageContainer" tabindex="-1">
+            <img id="aboutImage" src="/assets/LinkedIn Picture.jpg" alt="Ethan Taub" tabindex="-1" style="opacity:0.9;filter:alpha(opacity=90);"/>
+        </div>
+
+        <div class="inopPage" id="inopText">
+            <h1 id="inopMessage">This page is under construction</h1> 
+        </div>
+
+        <!-- SCRIPTS -->
+
+        <!-- Scroll -->
+        <script>
+            const gallery = document.querySelector('.gallery');
+
+            // Function to check if the cursor is over a 3D model
+            function isOverModel(event) {
+                return event.target.closest('.model-container') !== null;
+            }
+
+            // Horizontal scroll with mouse wheel support
+            gallery.addEventListener('wheel', (event) => {
+                if (event.deltaY !== 0 && !isOverModel(event)) {
+                    event.preventDefault();
+                    gallery.scrollLeft += event.deltaY;
+                }
+            });
+
+            // Enable page-wide horizontal scrolling when cursor is anywhere except the gallery script elements
+            window.addEventListener('wheel', (event) => {
+                if (!isOverModel(event)) {
+                    const delta = Math.sign(event.deltaY);
+                    gallery.scrollLeft += delta * 1; // Adjust scroll speed
+                }
+            });
+        </script>
+
+        <!-- Interaction -->
+        <!-- Interaction -->
+<script>
+    const descriptionTitle = document.getElementById('descriptionTitle');
+    const descriptionContent = document.getElementById('descriptionText');
+    const descriptionAssociativity = document.getElementById('descriptionAssociativity');
+    const modelContainers = document.querySelectorAll('.model-container');
+    const descriptionPanel = document.getElementById('descriptionPanel');
+    const backButtonContainer = document.getElementById('backButtonContainer');
+    const closeBtn = document.getElementById('closeBtn');
+
+    const aboutNavItem = document.getElementById('about');
+    const aboutImageContainer = document.getElementById('aboutImageContainer');
+    const storeNavItem = document.getElementById('store');
+    const inopMessage = document.getElementById('inopText');
+    const headerDate = document.querySelector('.header-date'); // Get the header date element
+    const aboutDescription = "Ethan Taub is a designer and engineer based in Seattle, Washington. His work spans across the aerospace and security sectors, with a focus on design, 3D modelling, and robotic systems. He is currently supporting efforts to re-engine the Boeing B-52J Stratofortress aircraft, which has been flying for nearly 70 years. Outside of design and engineering, Ethan enjoys photography, travel, exploring, cooking, and being a cat dad.";
+    const navItems = document.querySelectorAll('.navItem');
+        
+
+    // Function to expand a container
+    function expandContainer(container) {
+        container.classList.add('expanded');
+
+        // Hide the other divs
+        modelContainers.forEach(otherContainer => {
+            if (otherContainer !== container) {
+                otherContainer.style.display = 'none';
+            }
+        });
+
+        // Display the title and description
+        const title = container.getAttribute('data-title');
+        const description = container.getAttribute('data-description');
+        let associativity = container.getAttribute('association');
+
+        descriptionTitle.textContent = title;
+        descriptionContent.textContent = description;
+
+        // Assign links to associativities
+        if (associativity === "The Boeing Company") {
+            descriptionAssociativity.innerHTML = `<a href="https://boeing.com/defense/b-52" target="_blank" style="color: inherit; text-decoration: none;">The Boeing Company</a>`;
+        } else if (associativity === "Asylon Robotics") {
+            descriptionAssociativity.innerHTML = `<a href="https://asylonrobotics.com/solutions/robotic-perimeter-security/" target="_blank" style="color: inherit; text-decoration: none;">Asylon Robotics</a>`;
+        } else if (associativity === "New York University") {
+            descriptionAssociativity.innerHTML = `<a href="https://engineering.nyu.edu/news/undergraduate-senior-design-capstone-competition-back-better-ever" target="_blank" style="color: inherit; text-decoration: none;">New York University</a>`;
+        } else {
+            descriptionAssociativity.textContent = associativity;
+        }
+
+        descriptionPanel.style.display = 'block';
+        backButtonContainer.style.display = 'block';
+    }
+
+    // Event listener for model containers with date update functionality
+    modelContainers.forEach(container => {
+        container.addEventListener('click', () => {
+            expandContainer(container);
+
+            // Update header date based on the clicked model
+            if (container.id === 'b52') {
+                headerDate.textContent = '2024';
+            } else if (container.id === 'drone') {
+                headerDate.textContent = '2022';
+            } else if (container.id === 'doghouse') {
+                headerDate.textContent = '2021';
+            }
+        });
+    });
+
+    // Event listener for "About" nav item
+    if (aboutNavItem) {
+        aboutNavItem.addEventListener('click', () => {
+            descriptionTitle.textContent = "";
+            descriptionContent.innerHTML = aboutDescription;
+            descriptionAssociativity.textContent = "";
+
+            descriptionPanel.style.display = 'block';
+            aboutImageContainer.style.display = 'block';
+
+            modelContainers.forEach(container => {
+                container.style.display = 'none';
+            });
+            inopMessage.style.display = 'none';
+            backButtonContainer.style.display = 'block';
+        });
+    } else {
+        console.error("About nav item not found!");
+    }
+
+    if (storeNavItem) {
+        storeNavItem.addEventListener('click', () => {
+            inopMessage.style.display = 'block';
+            modelContainers.forEach(container => {
+                container.style.display = 'none';
+            });
+
+            descriptionPanel.style.display = 'none';
+            aboutImageContainer.style.display = 'none';
+            backButtonContainer.style.display = 'block';
+        });
+    } else {
+        console.error("Store nav item not found!");
+    }
+
+    // Close button functionality
+    closeBtn.addEventListener('click', () => {
+        modelContainers.forEach(container => {
+            container.classList.remove('expanded');
+            container.style.display = 'block';
+        });
+
+        headerDate.textContent = '2024';
+        descriptionPanel.style.display = 'none';
+        aboutImageContainer.style.display = 'none';
+        inopMessage.style.display = 'none';
+        backButtonContainer.style.display = 'none';
+    });
+
+    const homeNavItem = document.getElementById('home');
+    if (homeNavItem) {
+        homeNavItem.addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    } else {
+        console.error("Home nav item not found!");
+    }
+</script>
+
+    </body>
+
+</html>
+
+            <!-- const aboutNavItem = document.getElementById('about'); // Assuming your "About" nav item has this ID
+            const aboutImageContainer = document.getElementById('aboutImageContainer');
+            const aboutDescription = "Ethan Taub is a designer and engineer based in Seattle, Washington. His work spans across the aerospace and security sectors, with a focus on design, 3D modelling, and robotic systems. He is currently supporting efforts to re-engine the Boeing B-52J Stratofortress aircraft, which has been flying for nearly 70 years. Outside of design and engineering, Ethan enjoys photography, travel, exploring, cooking, and being a cat dad.";
+            const storeNavItem = document.getElementById('store');
+            const inopMessage = document.getElementById('inopText');
+            const navItems = document.querySelectorAll('.navItem'); -->
