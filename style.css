@@ -364,3 +364,18 @@ body {
         box-sizing: border-box;
     }
 }
+
+
+
+
+/* For portrait mode specifically */
+@media (max-width: 900px) and (orientation: portrait) {
+    .about-container {
+        flex-direction: column;
+    }
+
+    .about-image img {
+        width: 100%; /* Fit the image to the screen width */
+        height: auto;
+    }
+}
