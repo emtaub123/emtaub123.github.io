@@ -322,48 +322,32 @@ body {
     border-width: 5px;
 }
 
-/* Portrait mode (vertical layout for mobile devices) */
-@media screen and (max-width: 768px) and (orientation: portrait) {
+/* Portrait mode (column layout) */
+@media (max-width: 900px) and (orientation: portrait) {
     .gallery {
-        flex-direction: column; /* Stack vertically */
-        height: auto; /* Let the gallery adjust height */
-        overflow-y: auto; /* Enable vertical scroll */
-        overflow-x: hidden; /* Disable horizontal scroll */
-    }
-
-    .model-container {
-        width: 100%; /* Full width */
-        height: auto; /* Dynamic height based on content */
-    }
-}
-
-/* Landscape mode (horizontal layout for mobile devices) */
-@media screen and (max-width: 768px) and (orientation: landscape) {
-    .gallery {
-        flex-direction: row; /* Stack horizontally */
-        height: 100vh; /* Full height for landscape */
-        overflow-x: auto; /* Enable horizontal scrolling */
-        overflow-y: hidden; /* Disable vertical scrolling */
-    }
-
-    .model-container {
-        width: 100%; /* Full width */
-        max-width: 500px; /* Constrain width */
-        height: 90%; /* Adjust to 90% height of viewport */
-    }
-}
-
-/* General mobile styles */
-@media only screen and (max-width: 768px) {
-    .gallery {
-        height: 100vh; /* Ensure full height usage */
+        flex-direction: column;
         overflow-y: auto;
-        overflow-x: hidden;
+        justify-content: flex-start;
+        align-items: center;
     }
 
     .model-container {
-        width: 100%;
-        height: auto;
+        width: 90%; /* Adjust model width to fit screen */
+        margin: 20px 0; /* Add vertical spacing between models */
+    }
+}
+
+/* Landscape mode (horizontal layout) */
+@media (max-width: 900px) and (orientation: landscape) {
+    .gallery {
+        flex-direction: row;
+        overflow-x: scroll;
+        justify-content: flex-start;
+    }
+
+    .model-container {
+        width: 500px; /* Set model width for landscape */
+        margin: 0 10px; /* Horizontal margin between models */
     }
 }
 
