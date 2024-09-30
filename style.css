@@ -292,6 +292,7 @@ body {
     flex: 1;
     display: none; /* Hidden by default */
     justify-content: center;
+    text-align: center;
     align-items: flex-start;
     margin-left: 45%;
     margin-bottom: 85px;
@@ -368,14 +369,19 @@ body {
 
 
 
-/* For portrait mode specifically */
+/* Responsive adjustments for portrait mode */
 @media (max-width: 900px) and (orientation: portrait) {
     .about-container {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .about-text {
+        width: 100%;
     }
 
     .about-image img {
-        width: 100%; /* Fit the image to the screen width */
+        width: 100%;          /* Fit image to screen width in portrait */
         height: auto;
     }
 }
