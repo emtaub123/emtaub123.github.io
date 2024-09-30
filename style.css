@@ -352,47 +352,15 @@ body {
 }
 
 
-/* Portrait mode (mobile, smaller screens) */
+/* Portrait mode: Ensure proper layout */
 @media (max-width: 900px) and (orientation: portrait) {
     .description-panel {
-        width: 90%; /* Adjust panel width to fit most of the screen */
-        top: 10%; /* Position panel more appropriately */
-        left: 5%; /* Align to the left with some padding */
-        transform: none; /* Remove translation to prevent offset issues */
-    }
-
-    .description-panel h2 {
-        font-size: 18px; /* Make title slightly smaller for mobile */
-    }
-
-    .description-panel p {
-        font-size: 12px; /* Make body text smaller */
-    }
-
-    .about-image img {
-        width: 100%; /* Ensure images scale down */
-        height: auto;
-    }
-}
-
-/* Landscape mode (small screens) */
-@media (max-width: 900px) and (orientation: landscape) {
-    .description-panel {
-        width: 80%; /* Wider panel in landscape mode */
-        left: 10%; /* Center with some padding */
-        top: 20%; /* Adjust top position for better layout */
-    }
-
-    .description-panel h2 {
-        font-size: 18px;
-    }
-
-    .description-panel p {
-        font-size: 13px;
-    }
-
-    .about-image img {
-        width: 80%;
-        height: auto;
+        left: 0;
+        top: 50%;
+        width: 100%; /* Take full screen width */
+        max-width: 100vw;
+        padding: 20px;
+        transform: translateY(-50%); /* Center vertically */
+        box-sizing: border-box;
     }
 }
