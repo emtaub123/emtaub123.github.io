@@ -323,33 +323,35 @@ body {
 }
 
 /* Portrait mode (vertical layout for mobile devices) */
-@media screen and (max-width: 768px) and (orientation: portrait) {
+@media only screen and (max-width: 820px) and (orientation: portrait) {
     .gallery {
-        flex-direction: column; /* Stack items vertically */
-        height: auto;
+        flex-direction: column;
+        overflow-y: auto; /* Allow vertical scroll */
         overflow-x: hidden; /* Disable horizontal scroll */
-        overflow-y: auto; /* Enable vertical scroll */
+        height: auto; /* Dynamic height */
     }
 
     .model-container {
-        width: 100%; /* Full width for mobile */
-        height: auto; /* Let height adjust based on content */
+        width: 100%; /* Full width */
+        max-width: 100%; /* Ensure no overflow */
+        height: auto; /* Let height adjust */
     }
 }
 
 /* Landscape mode (horizontal layout for mobile devices) */
-@media screen and (max-width: 768px) and (orientation: landscape) {
+@media only screen and (max-width: 820px) and (orientation: landscape) {
     .gallery {
-        flex-direction: row; /* Stack items horizontally */
-        height: calc(100vh - 60px); /* Use available vertical space */
-        overflow-x: auto; /* Enable horizontal scroll */
+        flex-direction: row;
+        overflow-x: auto; /* Allow horizontal scroll */
         overflow-y: hidden; /* Disable vertical scroll */
+        height: calc(100vh - 50px); /* Use available vertical space */
     }
 
     .model-container {
-        width: 100%; /* Adjust width */
-        max-width: 500px; /* Ensure a max width for larger screens */
-        height: 90%; /* Adjust height based on screen */
+        flex: 0 0 auto; /* No shrinking */
+        width: 90vw; /* Set model container to 90% of the viewport width */
+        max-width: 500px; /* Limit max width */
+        height: auto; /* Auto height based on content */
     }
 }
 
