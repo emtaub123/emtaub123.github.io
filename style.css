@@ -322,3 +322,24 @@ body {
     border-width: 5px;
 }
 
+/* Mobile styles for gallery */
+@media screen and (max-width: 768px) {
+    .gallery {
+        flex-direction: column; /* Stack divs vertically */
+        overflow-x: hidden; /* Disable horizontal scroll */
+        overflow-y: auto; /* Enable vertical scrolling */
+        height: auto; /* Allow the gallery to adjust height */
+    }
+
+    .model-container {
+        width: 100%; /* Full width for mobile */
+        height: auto; /* Adjust height automatically */
+        margin: 10px 0; /* Add margin for spacing between containers */
+    }
+
+    .expanded {
+        width: 100%;
+        height: auto;
+    }
+}
+
