@@ -322,8 +322,8 @@ body {
     border-width: 5px;
 }
 
-/* Mobile styles for gallery */
-@media screen and (max-width: 768px) {
+/* Portrait mode (vertical layout for mobile devices) */
+@media screen and (max-width: 768px) and (orientation: portrait) {
     .gallery {
         flex-direction: column; /* Stack divs vertically */
         overflow-x: hidden; /* Disable horizontal scroll */
@@ -340,6 +340,27 @@ body {
     .expanded {
         width: 100%;
         height: auto;
+    }
+}
+
+/* Landscape mode (horizontal layout for mobile devices) */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .gallery {
+        flex-direction: row; /* Stack divs horizontally */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        overflow-y: hidden; /* Disable vertical scrolling */
+        height: calc(100vh - 60px); /* Ensure gallery takes remaining space minus header height */
+    }
+
+    .model-container {
+        width: 500px; /* Maintain the fixed width */
+        height: 90%; /* Adjust height */
+        margin-right: 10px; /* Add some margin between containers */
+    }
+
+    .expanded {
+        width: 500px;
+        height: 90vh;
     }
 }
 
