@@ -252,6 +252,23 @@
     } else {
         console.error("Home nav item not found!");
     }
+
+	const headerTitle = document.getElementById('name');
+    if (headerTitle) {
+        headerTitle.addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    } else {
+        console.error("Home nav item not found!");
+    }
+
+    if (headerDate) {
+        headerDate.addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    } else {
+        console.error("Home nav item not found!");
+    }
 </script>
 
     </body>
