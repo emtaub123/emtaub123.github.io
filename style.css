@@ -101,7 +101,6 @@ body {
     text-align: center;
     z-index: 10;
     position: relative;
-    pointer-events: none;
     user-select: none; /* Prevents text from being selected */
 }
 
@@ -357,7 +356,7 @@ body {
 @media (max-width: 900px) and (orientation: portrait) {
     .description-panel {
         width: 90%; /* Adjust panel width to fit most of the screen */
-        top: 25%; /* Position panel more appropriately */
+        top: 30%; /* Position panel more appropriately */
         left: 5%; /* Align to the left with some padding */
         transform: none; /* Remove translation to prevent offset issues */
     }
