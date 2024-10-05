@@ -377,6 +377,7 @@ body {
     .about-image {
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 10%;
     }
 
     .about-image img {
