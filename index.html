@@ -58,13 +58,13 @@
         </div>
         
         <div class="gallery">
-            <div id="b52" class="model-container" data-title="B-52J" association="The Boeing Company 🔗" data-description="Designed propulsion structure for the B-52J Commercial Engine Replacement Program (CERP), including primary pylon strut attach fittings, structural frames, secondary details, and exterior fairings.">
+            <div id="b52" class="model-container" data-title="B-52J" association="The Boeing Company" data-description="Designed propulsion structure for the B-52J Commercial Engine Replacement Program (CERP), including primary pylon strut attach fittings, structural frames, secondary details, and exterior fairings.">
                 <script type="module" src="https://emtaub123.github.io/src/js/b52.js"></script>
             </div>
-            <div id="drone" class="model-container" data-title="Dual Drone System" association="New York University 🔗" data-description="Led the design, manufacturing, and testing of a multi-UAV system to maximize area coverage in a multitude of scenarios.  This project was awarded 'The Best Design' and 'Students' Choice' awards out of all NYU Tandon School of Engineering senior capstone projects for the class of 2022. Collaborators are Sebastian Abreu, JC Guerrero, Chris Glenn, Charles Xie, Adam Kang, and Henry Simon.">
+            <div id="drone" class="model-container" data-title="Dual Drone System" association="New York University" data-description="Led the design, manufacturing, and testing of a multi-UAV system to maximize area coverage in a multitude of scenarios.  This project was awarded 'The Best Design' and 'Students' Choice' awards out of all NYU Tandon School of Engineering senior capstone projects for the class of 2022. Collaborators are Sebastian Abreu, JC Guerrero, Chris Glenn, Charles Xie, Adam Kang, and Henry Simon.">
                 <script type="module" src="https://emtaub123.github.io/src/js/drone.js"></script>
             </div>
-            <div id="doghouse" class="model-container" data-title="DroneDog System" association="Asylon Robotics 🔗" data-description="Assisted in the development of the DogHouse, inluding the overall system architecture, the testing program with Boston Dynamics' Spot robot dog, and the design of several structural details. Drafted and presented Prelimininary Design Review (PDR) to company executives and leadership.">
+            <div id="doghouse" class="model-container" data-title="DroneDog System" association="Asylon Robotics" data-description="Assisted in the development of the DogHouse, inluding the overall system architecture, the testing program with Boston Dynamics' Spot robot dog, and the design of several structural details. Drafted and presented Prelimininary Design Review (PDR) to company executives and leadership.">
                 <script type="module" src="https://emtaub123.github.io/src/js/house.js"></script>
             </div>
         </div>
@@ -165,11 +165,11 @@
         descriptionContent.textContent = description;
 
         // Assign links to associativities
-        if (associativity === "The Boeing Company 🔗") {
+        if (associativity === "The Boeing Company") {
             descriptionAssociativity.innerHTML = `<a href="https://boeing.com/defense/b-52" target="_blank" style="color: inherit; text-decoration: none;">The Boeing Company</a>`;
-        } else if (associativity === "Asylon Robotics 🔗") {
+        } else if (associativity === "Asylon Robotics") {
             descriptionAssociativity.innerHTML = `<a href="https://asylonrobotics.com/solutions/robotic-perimeter-security/" target="_blank" style="color: inherit; text-decoration: none;">Asylon Robotics</a>`;
-        } else if (associativity === "New York University 🔗") {
+        } else if (associativity === "New York University") {
             descriptionAssociativity.innerHTML = `<a href="https://engineering.nyu.edu/news/undergraduate-senior-design-capstone-competition-back-better-ever" target="_blank" style="color: inherit; text-decoration: none;">New York University</a>`;
         } else {
             descriptionAssociativity.textContent = associativity;
